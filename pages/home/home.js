@@ -1,5 +1,6 @@
 // pages/home/home.js
-const requestUrl = require("../../utils/api.js");
+var Api = require("../../utils/api.js");
+var http = require("../../utils/http.js")
 Page({
 
   /**
@@ -15,13 +16,10 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    wx.request({
-      url: requestUrl.hotVideoRank,
-      success: function (data) {
-        that.setData({
-          hotSongList: data.data.song_list,
-        })
-      }
+    http.get(Api.hotVideoRank).then(res=>{
+      that.setData({
+        hotSongList: res.data.song_list,
+      })
     })
   },
 
