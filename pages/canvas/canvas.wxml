@@ -1,0 +1,7 @@
+<canvas canvas-id="canvas" 
+style="width:748rpx;height:800rpx;border: 1rpx solid #000"
+bindtouchstart='start'
+bindtouchmove='move'
+bindtouchend='end'></canvas>
+<button bindtap='chooseImg'>选择图片</button>
+<button bindtap='drawLop'>显示绘制过程</button>
