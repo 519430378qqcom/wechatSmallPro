@@ -1,4 +1,5 @@
 var config = require("config.js")
+var app = getApp();
 /**
  * 邮箱以及手机的正则表达式
  */
@@ -31,8 +32,23 @@ function log(e) {
     console.info(e)
   }
 }
+/**
+ * 是否登录
+ */
+function isLogin(){
+  return app.globalData.code !=""; 
+}
+/**
+ * 是否获取到微信用户信息
+ */
+function hasUserInfo(){
+  return !isEmpty(app.globalData.userInfo);
+}
 module.exports = {
   regexConfig: regexConfig,
   isMobile:isMobile,
   log: log,
+  isEmpty:isEmpty,
+  isLogin: isLogin,
+  hasUserInfo: hasUserInfo
 }

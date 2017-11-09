@@ -10,7 +10,6 @@ function requstPost(url, data, header) {
 //封装Request请求方法
 function requst(url, method, data, header) {
   wx.showNavigationBarLoading();
-
   if (typeof header == "undefined" || header == null) {
     header = "";
   }
@@ -38,7 +37,7 @@ function requst(url, method, data, header) {
       success: function (res) {
         util.log("请求" + url + "结果如下：");
         util.log(res);
-        //解析cookie,并存储起来
+        //解析cookie,并保存
         wxcookie.parseCookie(res);
         resove(res);
       },

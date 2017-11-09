@@ -1,7 +1,12 @@
 <!--pages/home/home.wxml-->
-<view id="videolist" wx:key="unmi" wx:for="{{hotSongList}}">
-    <image class="bigimg" src='{{hotSongList[index].pic_big}}'></image>
-    <text class="rank">排名：{{index +1}}</text>
-    <text class="title">歌名：{{hotSongList[index].title}}</text>
-    <text class="author">演唱：{{hotSongList[index].author}}</text>
+<view class='scrollH-box'>
+  <scroll-view scroll-x="true" class='scrollH' scroll-into-view="tab{{currentIndex}}"                 bindscroll="tabScroll">
+  <view wx:for="{{songRankTab}}" class='{{index==currentIndex?"tabItemChecked":"tabItem"}}' 
+    id='tab{{index}}'>
+    {{item.name}}
+  </view>
+  </scroll-view>
 </view>
+<swiper class='swiper'>
+  <swiper-item></swiper-item>
+</swiper>

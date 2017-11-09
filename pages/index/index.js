@@ -1,7 +1,6 @@
-//index.js
-//获取应用实例
-const app = getApp()
 
+const app = getApp();
+var util = require("../../utils/util.js")
 Page({
   data: {
     motto: 'Hello World',
@@ -16,7 +15,7 @@ Page({
     })
   },
   onLoad: function () {
-    if (app.globalData.userInfo) {
+    if (!util.isEmpty(app.globalData.userInfo)) {
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true

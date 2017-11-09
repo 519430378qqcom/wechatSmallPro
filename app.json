@@ -1,28 +1,36 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/index/index"
+    "pages/my/my",
+    "pages/canvas/canvas"
   ],
+
   "tabBar": {
-    "list": [
-      {
-        "pagePath": "pages/home/home",
-        "text": "首页",
-        "iconPath": "images/tabBar/home.png",
-        "selectedIconPath": "images/tabBar/home_press.png"
-      },
-      {
-        "pagePath": "pages/index/index",
-        "text": "个人信息",
-        "iconPath": "images/tabBar/my.png",
-        "selectedIconPath": "images/tabBar/my_press.png"
-      }
+    "list": [{
+      "pagePath": "pages/home/home",
+      "text": "首页",
+      "iconPath": "images/tabBar/home.png",
+      "selectedIconPath": "images/tabBar/home_checked.png"
+    },
+    {
+      "pagePath": "pages/canvas/canvas",
+      "text": "涂鸦",
+      "iconPath": "images/tabBar/lm.png",
+      "selectedIconPath": "images/tabBar/lm_checked.png"
+    },
+    {
+      "pagePath": "pages/my/my",
+      "text": "私密",
+      "iconPath": "images/tabBar/my.png",
+      "selectedIconPath": "images/tabBar/my_checked.png"
+    }
     ]
   },
+  
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#ed4a4b",
+    "navigationBarTitleText": "小窝音乐",
+    "navigationBarTextStyle": "white"
   }
 }
