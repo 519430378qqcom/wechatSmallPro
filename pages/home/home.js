@@ -12,7 +12,7 @@ Page({
     { type: 12, name: "爵士" },{type: 16, name: "流行" }, { type: 21, name: "欧美金曲榜" }, 
     { type: 22, name: "金典老歌榜" },{ type: 23, name: "情歌对唱榜"}, { type: 24, name: "影视金曲榜" }, 
     { type: 25, name: "网络歌曲榜"}],
-    songRankList:[],
+    songRank1:[],
     currentIndex:0
   },
 
@@ -20,7 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.songRank(1,10,0);   
   },
 
   /**
@@ -83,6 +83,7 @@ Page({
       offset: offset
     }).then(res => {
       that.setData({
+        
       })
     })
   },
@@ -91,6 +92,16 @@ Page({
    * 顶部滚动事件
    */
   tabScroll: function (res){
+    // util.log(res);
+  },
+
+  /**
+   * 顶部tab点击
+   */
+  tapTab: function (res){
     util.log(res);
+    this.setData({
+      currentIndex: res.currentTarget.dataset.index
+    });
   }
 })

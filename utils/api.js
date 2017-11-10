@@ -1,4 +1,4 @@
-var baseUrl = "http://tingapi.ting.baidu.com/v1/restserver/ting";
+var baseUrl = "http://tingapi.ting.baidu.com/v1/restserver/ting?";
 
 module.exports = {
   /**
