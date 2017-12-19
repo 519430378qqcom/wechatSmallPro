@@ -1,7 +1,7 @@
 <!--pages/home/home.wxml-->
 <view class='scrollH-box'>
   <scroll-view scroll-x="true" class='scrollH' scroll-into-view="tab{{currentIndex>2?currentIndex-2:''}}"      bindscroll="tabScroll">
-  <view wx:for="{{songRankTab}}" class='{{index==currentIndex?"tabItemChecked":"tabItem"}}' 
+  <view wx:for="{{songRankTab}}" wx:key="unique" class='{{index==currentIndex?"tabItemChecked":"tabItem"}}' 
     id='tab{{index}}' bindtap='tapTab' data-index='{{index}}'>
     {{item.name}}
   </view>

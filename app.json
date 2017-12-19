@@ -1,13 +1,13 @@
 {
   "pages": [
-    "pages/home/home",
+    "pages/yue/yue",
     "pages/my/my",
     "pages/canvas/canvas"
   ],
 
   "tabBar": {
     "list": [{
-      "pagePath": "pages/home/home",
+      "pagePath": "pages/yue/yue",
       "text": "首页",
       "iconPath": "images/tabBar/home.png",
       "selectedIconPath": "images/tabBar/home_checked.png"
