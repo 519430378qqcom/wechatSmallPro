@@ -1,0 +1,1 @@
+<audio src="{{currentAudio.bitrate.file_link}}" controls="{{true}}" name="{{currentAudio.songinfo.title}}" author="{{currentAudio.songinfo.author}}" poster="{{currentAudio.songinfo.pic_big}}"></audio>

@@ -1,0 +1,10 @@
+.btn1{
+  display: inline-block;
+  width:375rpx;
+  background: green;
+}
+.btn2{
+  display: inline-block;
+  width:375rpx;
+  background: red;
+}

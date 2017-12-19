@@ -1,0 +1,12 @@
+<view>
+  <radio-group class="radio-group" bindchange="radioChange">
+    <label class="radio" wx:for="{{nameList}}" wx:key="ss">
+      <radio value="{{index}}"/>{{item.name}}
+    </label>
+  </radio-group>
+  <button class='btn1' bindtap='start'>开始约车</button>
+  <button class='btn2' bindtap='stop'>停止约车</button>
+  <view>
+
+  </view>
+</view>
