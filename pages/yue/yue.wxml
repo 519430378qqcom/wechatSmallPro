@@ -4,9 +4,30 @@
       <radio value="{{index}}"/>{{item.name}}
     </label>
   </radio-group>
+  <picker mode="date" value="{{date}}" bindchange="bindDateChange1">
+    <view class="picker">
+    约车时间：{{yueTime1}}
+    </view>
+  </picker>
+  只约：
+  <radio-group class="radio-group" bindchange="radioChange1">
+    <label class="radio" wx:for="{{['早上','中午','晚上']}}" wx:key="ss">
+      <radio value="{{index}}"/>{{item}}
+    </label>
+  </radio-group>
+  <view></view>
+   优先约：
+  <radio-group class="radio-group" bindchange="radioChange2">
+    <label class="radio" wx:for="{{['早上','中午','晚上']}}" wx:key="ss">
+      <radio value="{{index}}"/>{{item}}
+    </label>
+  </radio-group>
   <button class='btn1' bindtap='start'>开始约车</button>
   <button class='btn2' bindtap='stop'>停止约车</button>
   <view>
-
+    <text class='error'>{{error}}</text>
+  </view>
+  <view wx:for="{{yueList}}" wx:key="ss" class='info' wx:if="item.count>0">
+    {{item.nowTime}}||{{item.time}}{{item.check}}场可约数量：{{item.count}}
   </view>
 </view>

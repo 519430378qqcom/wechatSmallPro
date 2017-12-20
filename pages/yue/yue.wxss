@@ -1,3 +1,6 @@
+.radio-group{
+  display: inline-block
+}
 .btn1{
   display: inline-block;
   width:375rpx;
@@ -7,4 +10,11 @@
   display: inline-block;
   width:375rpx;
   background: red;
+}
+.error{
+  display: block;
+  color: red;
+}
+.info{
+  font-size: 18rpx;
 }
