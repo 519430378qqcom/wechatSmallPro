@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    nameList: [{ "name": "东哥", "number": "51723918", "imei": "9A6E73B13CB1CFDEC9010379DEE4A8BB", "cookie":"tHuIebKocq4joXX/W+I7WUr+Wusvt8ewMboCCJ16XDbc4KSBWvvGXj4BBnhZTbYIqJ1DaxQtJ/+7/+tEeAYsioHPi65UvZytawEmsxvVG6kKqNBgGapOGYOwvtW8UG7GiTGs+CSQMpxRAnRFbrWPQYq2S77DdF1TC5Z3IcdGI1QdA8nFuXHZ3YFMC0We4vnKWrPi0ZaOHTrRQqmcwCsTlwu/tFFUbfzxzHnWx/jKLaFVbaWaSgT1hyY7O6zahnNuzoHXoD/NZM530abyqmRlZbp6iXpgq3zCO7QCCmdjxPXmSZ/XkEf0881tymFNrihemIh+ksH0fhv2eE/MgJzQtHHirTswnodK1EX2KZjAOgS4EyTEYogm0Q1gsWnlUuPj12evQkhBIh68+ZXB2VsuKA=="},
+    nameList: [{ "name": "东哥", "number": "51723918", "imei": "9A6E73B13CB1CFDEC9010379DEE4A8BB", "cookie":"tHuIebKocq4joXX/W+I7WUr+Wusvt8ewMboCCJ16XDbc4KSBWvvGXj4BBnhZTbYIqJ1DaxQtJ/+7/+tEeAYsioHPi65UvZytawEmsxvVG6kKqNBgGapOGYOwvtW8UG7GiTGs+CSQMpxRAnRFbrWPQYq2S77DdF1TC5Z3IcdGI1QdA8nFuXHZ3YFMC0We4vnKWrPi0ZaOHTrRQqmcwCsTlwu/tFFUbfzxzHnWx/jKLaFVbaWaSgT1hyY7O6zahnNuzoHXoD/NZM530abyqmRlZWvIDGykMiT6JRSmUyWACkHD3qxX1kmpDD5/zAc6T9WzN75PG949tRT2eE/MgJzQtHHirTswnodK1EX2KZjAOgS4EyTEYogm0Q1gsWnlUuPj12evQkhBIh68+ZXB2VsuKA=="},
       { "name": "源源", "number": "51723918", "imei": "9A6E73B13CB1CFDEC9010379DEE4A8BB", "cookie": "tHuIebKocq4joXX/W+I7WUr+Wusvt8ewMboCCJ16XDbc4KSBWvvGXj4BBnhZTbYIqJ1DaxQtJ/+7/+tEeAYsioHPi65UvZytawEmsxvVG6kKqNBgGapOGYOwvtW8UG7GiTGs+CSQMpxRAnRFbrWPQYq2S77DdF1TC5Z3IcdGI1QdA8nFuXHZ3YFMC0We4vnKWrPi0ZaOHTrRQqmcwCsTlwu/tFFUbfzxzHnWx/jKLaFVbaWaSgT1hyY7O6zahnNuzoHXoD/NZM530abyqmRlZYAiQCg9UfOyMIvci9bTmyfzjbTOHsxgT82cbUhFdL6OU+urCetR7dP2eE/MgJzQtHHirTswnodK1EX2KZjAOgS4EyTEYogm0Q1gsWnlUuPj12evQkhBIh68+ZXB2VsuKA==" }],
       userInfo:"",
       yueTime1:"",
@@ -19,7 +19,9 @@ Page({
       yuing:false,
       strategy:0,
       hasCheck:[],
-      yueIndex:0
+      yueIndex:0,
+      infoIndex:0,
+      ipValue:0
   },
 
   /**
@@ -124,30 +126,74 @@ Page({
     }); 
     var strategy = this.data.strategy; 
     timer2 = setInterval(function (){
-      if (strategy == 0) {
-        that.getYueInfo(that.data.yueTime1,"2001");
-      } else if (strategy == 1){
-        that.getYueInfo(that.data.yueTime1, "2002");
-      } else if (strategy == 2) {
-        that.getYueInfo(that.data.yueTime1, "2003");
-      } else if (strategy == 3) {
+      if(that.data.strategy == 0){
         that.getYueInfo(that.data.yueTime1, "2001");
+      } else if (that.data.strategy == 1){
         that.getYueInfo(that.data.yueTime1, "2002");
+      } else if (that.data.strategy == 2) {
         that.getYueInfo(that.data.yueTime1, "2003");
-      } else if (strategy == 4) {
-        that.getYueInfo(that.data.yueTime1, "2002");
-        that.getYueInfo(that.data.yueTime1, "2001");
-        that.getYueInfo(that.data.yueTime1, "2003");
-      } else if (strategy == 5) {
-        that.getYueInfo(that.data.yueTime1, "2003");
-        that.getYueInfo(that.data.yueTime1, "2001");
-        that.getYueInfo(that.data.yueTime1, "2002");
+      } else if (that.data.strategy == 3){
+        if (that.data.infoIndex == 0) {
+          that.getYueInfo(that.data.yueTime1, "2001");
+        } else if (that.data.infoIndex == 1) {
+          that.getYueInfo(that.data.yueTime1, "2002");
+        } else if (that.data.infoIndex == 2) {
+          that.getYueInfo(that.data.yueTime1, "2003");
+        }
+        that.data.infoIndex++;
+        if (that.data.infoIndex > 2) {
+          that.data.infoIndex = 0;
+        }
+      } else if (that.data.strategy == 4) {
+        if (that.data.infoIndex == 0) {
+          that.getYueInfo(that.data.yueTime1, "2002");
+        } else if (that.data.infoIndex == 1) {
+          that.getYueInfo(that.data.yueTime1, "2001");
+        } else if (that.data.infoIndex == 2) {
+          that.getYueInfo(that.data.yueTime1, "2003");
+        }
+        that.data.infoIndex++;
+        if (that.data.infoIndex > 2) {
+          that.data.infoIndex = 0;
+        }
+      } else if (that.data.strategy == 5) {
+        if (that.data.infoIndex == 0) {
+          that.getYueInfo(that.data.yueTime1, "2003");
+        } else if (that.data.infoIndex == 1) {
+          that.getYueInfo(that.data.yueTime1, "2001");
+        } else if (that.data.infoIndex == 2) {
+          that.getYueInfo(that.data.yueTime1, "2002");
+        }
+        that.data.infoIndex++;
+        if (that.data.infoIndex > 2) {
+          that.data.infoIndex = 0;
+        }
       }
-    },1000);
+    },400);
     timer1 = setInterval(function () {
-      if (that.data.arrayResult.length > 0 && !that.data.yuing) {
-        that.yue(that.data.arrayResult[that.data.yueIndex]);
-        that.data.yueIndex ++;
+      if (that.data.arrayResult1.length > 0 && !that.data.yuing) {
+        if (that.data.yueIndex != that.data.arrayResult1.length){
+          that.yue(that.data.arrayResult1[that.data.yueIndex],"2001");
+          that.data.yueIndex++;    
+        }else{
+          that.data.yueIndex = 0;
+          if (that.data.arrayResult2.length > 0 && !that.data.yuing) {
+            if (that.data.yueIndex != that.data.arrayResult2.length) {
+              that.yue(that.data.arrayResult2[that.data.yueIndex],"2002");
+              that.data.yueIndex++;
+            } else {
+              that.data.yueIndex = 0;
+              if (that.data.arrayResult3.length > 0 && !that.data.yuing) {
+                if (that.data.yueIndex != that.data.arrayResult3.length) {
+                  that.yue(that.data.arrayResult3[that.data.yueIndex],"2003");
+                  that.data.yueIndex++;
+                } else {
+                  that.data.yueIndex = 0;
+                }
+              }
+            }
+          }
+        } 
       }
     }, 200);
   },
@@ -158,11 +204,16 @@ Page({
   },
   getYueInfo:function(time,check){
     for(var i=0;i<this.data.hasCheck.length;i++){
-      if (this.data.hasCheck[i] = check){
+      if (this.data.hasCheck[i] == check){
         return;
       }
     }
     var that = this;
+    if (that.data.ipValue < 255){
+      that.data.ipValue++;
+    }else{
+      that.data.ipValue = 0;
+    }
     var params = {
       "osversion": "7.0",
       "ossdk": "24",
@@ -172,7 +223,7 @@ Page({
       "appversion": "4.0.0",
       "filters[xnsd]": check,
       "version": "4.0.0",
-      "ipaddress": "192.168.137.231",
+      "ipaddress": "192.168.137." + that.data.ipValue,
       "filters[xxzh]": that.data.userInfo.number,
       "os": "an"
     }
@@ -187,12 +238,12 @@ Page({
           var arrayResult = e.data.data.Result;
           if(arrayResult.length>0){
             if(check = "2001"){
-              that.data.arrayResult1 = arrayResult1;
+              that.data.arrayResult1 = arrayResult;
             }else if(check = "2002"){
-              that.data.arrayResult2 = arrayResult2;
+              that.data.arrayResult2 = arrayResult;
             }
             else if (check = "2003") {
-              that.data.arrayResult3 = arrayResult3;
+              that.data.arrayResult3 = arrayResult;
             }
             that.data.hasCheck.push(check)
           }
@@ -202,10 +253,20 @@ Page({
             "time" : time,
             "check":check
           });
+          that.setData({
+            error: "正在约车"
+          });
         } else {
           that.setData({
-            error: e.data.data.message
+            error: e.data.message
           });
+          that.stop();
+          setTimeout(
+            function(){
+              that.start();
+            },
+            20000
+          );
         }
       }
     });
@@ -213,13 +274,18 @@ Page({
   addYueInfo:function(e){
     var array = this.data.yueList;
     array.unshift(e)
+    if(array.length>30){
+      array.pop();
+    }
     this.setData({
       yueList:array
     });
   },
-  yue:function(result){
-    console.info("yue");
+  yue:function(result,check){
     var that = this;
+    if (that.data.yuing){
+      return;
+    }
     that.data.yuing = true;
     var params = {
       "osversion": "7.0",
@@ -230,7 +296,7 @@ Page({
       "version": "4.0.0",
       "ipaddress": "192.168.137.231",
       "os": "an",
-      "params": result.CNBH + "."+that.data.timer1+"."+result.check+"."
+      "params": result.CNBH + "."+that.data.yueTime1+"."+check+"."
     }
     wx.request({
       url: "http://haijia.xuechebu.com:8008/KM2/ClYyAddByMutil",
@@ -238,10 +304,16 @@ Page({
       header: { cookie: "JX_LoginOn=" + that.data.userInfo.cookie },
       method: "GET",
       success: function (e) {
-        if(e.data.data.code = 0){
+        console.info(e);
+        if(e.data.code == 0){
           that.setData({
             error:"约车成功",
             yuing:true
+          });
+          that.stop();
+        }else{
+          that.setData({
+            error: e.message,
           });
         }
         that.data.yuing = false;
