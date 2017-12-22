@@ -1,5 +1,6 @@
 .radio-group{
-  display: inline-block
+  display: inline-block;
+  font-size: 26rpx;
 }
 .btn1{
   display: inline-block;

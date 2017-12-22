@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    nameList: [{ "name": "东哥", "number": "51723918", "imei": "9A6E73B13CB1CFDEC9010379DEE4A8BB", "cookie":"tHuIebKocq4joXX/W+I7WUr+Wusvt8ewMboCCJ16XDbc4KSBWvvGXj4BBnhZTbYIqJ1DaxQtJ/+7/+tEeAYsioHPi65UvZytawEmsxvVG6kKqNBgGapOGYOwvtW8UG7GiTGs+CSQMpxRAnRFbrWPQYq2S77DdF1TC5Z3IcdGI1QdA8nFuXHZ3YFMC0We4vnKWrPi0ZaOHTrRQqmcwCsTlwu/tFFUbfzxzHnWx/jKLaFVbaWaSgT1hyY7O6zahnNuzoHXoD/NZM530abyqmRlZWvIDGykMiT6JRSmUyWACkHD3qxX1kmpDD5/zAc6T9WzN75PG949tRT2eE/MgJzQtHHirTswnodK1EX2KZjAOgS4EyTEYogm0Q1gsWnlUuPj12evQkhBIh68+ZXB2VsuKA=="},
+    nameList: [{ "name": "东哥", "number": "51723918", "imei": "9A6E73B13CB1CFDEC9010379DEE4A8BB", "cookie":"tHuIebKocq4joXX/W+I7WUr+Wusvt8ewMboCCJ16XDbc4KSBWvvGXj4BBnhZTbYIqJ1DaxQtJ/+7/+tEeAYsioHPi65UvZytawEmsxvVG6kKqNBgGapOGYOwvtW8UG7GiTGs+CSQMpxRAnRFbrWPQYq2S77DdF1TC5Z3IcdGI1QdA8nFuXHZ3YFMC0We4vnKWrPi0ZaOHTrRQqmcwCsTlwu/tFFUbfzxzHnWx/jKLaFVbaWaSgT1hyY7O6zahnNuzoHXoD/NZM530abyqmRlZVGPbWSuOaUPGltURxWHJ2QdpO9Rto1kXdt8ik1KR9NBvCCGzqtpPj32eE/MgJzQtHHirTswnodK1EX2KZjAOgS4EyTEYogm0Q1gsWnlUuPj12evQkhBIh68+ZXB2VsuKA=="},
       { "name": "源源", "number": "51723918", "imei": "9A6E73B13CB1CFDEC9010379DEE4A8BB", "cookie": "tHuIebKocq4joXX/W+I7WUr+Wusvt8ewMboCCJ16XDbc4KSBWvvGXj4BBnhZTbYIqJ1DaxQtJ/+7/+tEeAYsioHPi65UvZytawEmsxvVG6kKqNBgGapOGYOwvtW8UG7GiTGs+CSQMpxRAnRFbrWPQYq2S77DdF1TC5Z3IcdGI1QdA8nFuXHZ3YFMC0We4vnKWrPi0ZaOHTrRQqmcwCsTlwu/tFFUbfzxzHnWx/jKLaFVbaWaSgT1hyY7O6zahnNuzoHXoD/NZM530abyqmRlZYAiQCg9UfOyMIvci9bTmyfzjbTOHsxgT82cbUhFdL6OU+urCetR7dP2eE/MgJzQtHHirTswnodK1EX2KZjAOgS4EyTEYogm0Q1gsWnlUuPj12evQkhBIh68+ZXB2VsuKA==" }],
       userInfo:"",
       yueTime1:"",
@@ -21,7 +21,8 @@ Page({
       hasCheck:[],
       yueIndex:0,
       infoIndex:0,
-      ipValue:0
+      ipValue:0,
+      duration:4000
   },
 
   /**
@@ -93,16 +94,13 @@ Page({
   radioChange2: function (e) {
     this.data.strategy = parseInt(e.detail.value) + 3
   },
+  radioChange3: function (e) {
+    this.data.duration = e.detail.value;
+  },
   bindDateChange1: function(e){
     var array = e.detail.value.split("-");
     this.setData({
       yueTime1: array[0]+"年"+ array[1]+"月"+array[2]+"日"
-    });
-  },
-  bindDateChange2: function (e) {
-    var array = e.detail.value.split("-");
-    this.setData({
-      yueTime2: array[0] + "年" + array[1] + "月" + array[2] + "日"
     });
   },
   start: function (){
@@ -169,7 +167,7 @@ Page({
           that.data.infoIndex = 0;
         }
       }
-    },400);
+    },that.data.duration);
     timer1 = setInterval(function () {
       if (that.data.arrayResult1.length > 0 && !that.data.yuing) {
         if (that.data.yueIndex != that.data.arrayResult1.length){
@@ -260,13 +258,13 @@ Page({
           that.setData({
             error: e.data.message
           });
-          that.stop();
-          setTimeout(
-            function(){
-              that.start();
-            },
-            20000
-          );
+          // that.stop();
+          // setTimeout(
+          //   function(){
+          //     that.start();
+          //   },
+          //   20000
+          // );
         }
       }
     });
