@@ -25,7 +25,7 @@
   <view></view>
   刷新速度:
   <radio-group class="radio-group" bindchange="radioChange3">
-    <label class="radio" wx:for="{{['300','500','1000','4000']}}" wx:key="ss">
+    <label class="radio" wx:for="{{['300','500','1000','8000']}}" wx:key="ss">
       <radio value="{{item}}"/>{{item}}
     </label>
   </radio-group>

@@ -9,7 +9,7 @@ function parseCookie(res) {
   if (cookieStr == null || typeof cookieStr == "undefined") {
     return;
   }
-  var cookieArray = cookieStr.split("domain=youmi.cn,");
+  var cookieArray = cookieStr.split("path=/");
   var cookieKey = "";
   try {
     //获取保存过的cookieKey

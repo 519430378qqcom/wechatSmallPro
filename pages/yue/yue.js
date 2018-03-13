@@ -1,12 +1,13 @@
 var timer1;
 var timer2;
+var http = require("../../utils/http.js");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    nameList: [{ "name": "东哥", "number": "51723918", "imei": "9A6E73B13CB1CFDEC9010379DEE4A8BB", "cookie":"tHuIebKocq4joXX/W+I7WUr+Wusvt8ewMboCCJ16XDbc4KSBWvvGXj4BBnhZTbYIqJ1DaxQtJ/+7/+tEeAYsioHPi65UvZytawEmsxvVG6kKqNBgGapOGYOwvtW8UG7GiTGs+CSQMpxRAnRFbrWPQYq2S77DdF1TC5Z3IcdGI1QdA8nFuXHZ3YFMC0We4vnKWrPi0ZaOHTrRQqmcwCsTlwu/tFFUbfzxzHnWx/jKLaFVbaWaSgT1hyY7O6zahnNuzoHXoD/NZM530abyqmRlZVGPbWSuOaUPGltURxWHJ2QdpO9Rto1kXdt8ik1KR9NBvCCGzqtpPj32eE/MgJzQtHHirTswnodK1EX2KZjAOgS4EyTEYogm0Q1gsWnlUuPj12evQkhBIh68+ZXB2VsuKA=="},
+    nameList: [{ "name": "东哥", "number": "51723918", "imei": "9A6E73B13CB1CFDEC9010379DEE4A8BB", "cookie":"tHuIebKocq4joXX/W+I7WUr+Wusvt8ewMboCCJ16XDbc4KSBWvvGXj4BBnhZTbYIqJ1DaxQtJ/+7/+tEeAYsioHPi65UvZytawEmsxvVG6kKqNBgGapOGYOwvtW8UG7GiTGs+CSQMpxRAnRFbrWPQYq2S77DdF1TC5Z3IcdGI1QdA8nFuXHZ3YFMC0We4vnKWrPi0ZaOHTrRQqmcwCsTlwu/tFFUbfzxzHnWx/jKLaFVbaWaSgT1hyY7O6zahnNuzoHXoD/NZM530abyqmRlZbx/jk59kAHaU5BjwZGvDKstG7TwcEo9eD1RGMgmOWKIeJBOxPcF9NL2eE/MgJzQtHHirTswnodK1EX2KZjAOgS4EyTEYogm0Q1gsWnlUuPj12evQkhBIh68+ZXB2VsuKA=="},
       { "name": "源源", "number": "51723918", "imei": "9A6E73B13CB1CFDEC9010379DEE4A8BB", "cookie": "tHuIebKocq4joXX/W+I7WUr+Wusvt8ewMboCCJ16XDbc4KSBWvvGXj4BBnhZTbYIqJ1DaxQtJ/+7/+tEeAYsioHPi65UvZytawEmsxvVG6kKqNBgGapOGYOwvtW8UG7GiTGs+CSQMpxRAnRFbrWPQYq2S77DdF1TC5Z3IcdGI1QdA8nFuXHZ3YFMC0We4vnKWrPi0ZaOHTrRQqmcwCsTlwu/tFFUbfzxzHnWx/jKLaFVbaWaSgT1hyY7O6zahnNuzoHXoD/NZM530abyqmRlZYAiQCg9UfOyMIvci9bTmyfzjbTOHsxgT82cbUhFdL6OU+urCetR7dP2eE/MgJzQtHHirTswnodK1EX2KZjAOgS4EyTEYogm0Q1gsWnlUuPj12evQkhBIh68+ZXB2VsuKA==" }],
       userInfo:"",
       yueTime1:"",
@@ -200,6 +201,9 @@ Page({
     clearInterval(timer1);
     clearInterval(timer2);
   },
+  /**
+   * 获取某场约车信息
+   */
   getYueInfo:function(time,check){
     for(var i=0;i<this.data.hasCheck.length;i++){
       if (this.data.hasCheck[i] == check){
@@ -269,6 +273,9 @@ Page({
       }
     });
   },
+  /**
+   * 添加约车信息
+   */
   addYueInfo:function(e){
     var array = this.data.yueList;
     array.unshift(e)
@@ -279,6 +286,9 @@ Page({
       yueList:array
     });
   },
+  /**
+   * 进行约车
+   */
   yue:function(result,check){
     var that = this;
     if (that.data.yuing){
@@ -316,6 +326,15 @@ Page({
         }
         that.data.yuing = false;
       }
+    });
+  },
+  /**
+   * 获取个人信息和cookie验证
+   */
+  getUserInfo(){
+    var url = "http://haijia.xuechebu.com:8008/Student/setbadingstuinfo?xybh=8000409031&jgid=115001&    password=simlesimlesimle"
+    http.get(url).then(res =>{
+
     });
   }
 })
